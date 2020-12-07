@@ -5,19 +5,14 @@ include_once('dbConnect.php');
   // Mảng JSON
   $response = array();
   $response["message"] = array();
-  $UserID=$_POST['UserID'];
-  $ToUserID=$_POST['ToUserID'];
+  $userID=$_POST['UserID'];
   // Câu lệnh Select dùng để xem dữ liệu
-  $result = mysqli_query($db->link,"SELECT * FROM message WHERE (UserID=$UserID and ToUserID=$ToUserID) or(UserID=$ToUserID and ToUserID=$UserID)");
+  $result = mysqli_query($db->link,"(SELECT ToUserID FROM message WHERE UserID = $userID)
+   UNION (SELECT UserID FROM message WHERE ToUserID = $userID)");
   //Đọc dữ liệu từ MySQL
   while($row = mysqli_fetch_array($result)){
     $t = array();
-    $t["MessageID"] = $row["MessageID"];
-    $t["RoomID"] = $row["RoomID"];
-    $t["UserID"] = $row["UserID"];
     $t["ToUserID"] = $row["ToUserID"];
-    $t["Text"] = $row["Text"];
-    $t["Time"] = $row["Time"];
     // Mảng JSON
     array_push($response["message"], $t);
  }

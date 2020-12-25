@@ -3,9 +3,9 @@ include_once('dbConnect.php');
  function dispInfo(){
    $db = new dbConnect();
   // Mảng JSON
-  $UserID=$_POST['UserID'];
+  $IDwork=$_POST['IDwork'];
   // Câu lệnh Select dùng để xem dữ liệu
-  $result = mysqli_query($db->link,"SELECT UserID FROM login WHERE UserID=$UserID");
+  $result = mysqli_query($db->link,"DELETE FROM work WHERE IDwork=$IDwork");
   if($result!=null)
   {
       echo"Oke";

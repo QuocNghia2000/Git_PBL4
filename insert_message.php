@@ -8,8 +8,9 @@ include_once('dbConnect.php');
   $ToUserID=$_POST['ToUserID'];
   $Time=$_POST['Time'];
   $RoomID=$_POST['RoomID'];
+  $IsImage=$_POST['IsImage'];
   // Câu lệnh Select dùng để xem dữ liệu
-  $result = mysqli_query($db->link,"INSERT INTO message values(null,$RoomID,$UserID,$ToUserID,'$Text','$Time')");
+  $result = mysqli_query($db->link,"INSERT INTO message values(null,$RoomID,$UserID,$ToUserID,'$Text','$Time',$IsImage)");
   //Đọc dữ liệu từ MySQL
   if(!$result)
   {

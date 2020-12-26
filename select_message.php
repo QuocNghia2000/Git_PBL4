@@ -18,6 +18,7 @@ include_once('dbConnect.php');
     $t["ToUserID"] = $row["ToUserID"];
     $t["Text"] = $row["Text"];
     $t["Time"] = $row["Time"];
+    $t["IsImage"] = $row["IsImage"];
     // Mảng JSON
     array_push($response["message"], $t);
  }
